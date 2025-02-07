@@ -1,0 +1,85 @@
+
+
+
+#micro {
+    text-align: center;
+    position: relative;
+    top: 250px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: xx-large;
+    margin-left: -30px;
+}
+
+
+form {
+    margin-top: 15%;
+    margin-left: 35%;
+    padding: 10px;
+    background-color: rgba(147, 157, 175, 0.308);
+    height: 25rem;
+    width: 30rem;
+    
+}
+
+#email_id {
+    width: 50%;
+    margin-top: 4rem;
+    padding: 0.5rem;
+    border: 1px solid gray;
+    font-family: 'fira code';
+    outline: none;
+}
+
+#pass_id {
+    width: 50%;
+    padding: 0.5rem;
+    font-family: 'fira code';
+    border: 1px solid gray;
+    outline: none;
+}
+
+#login_link {
+    text-decoration: none;
+    background-color: dodgerblue;
+    padding: 0.4rem;
+    width: 15rem;
+    color: white;
+    display: inline-block;
+}
+
+#login_link:hover {
+    background-color: rgb(14, 75, 136);
+    transition-duration: 0.4s;
+}
+
+#new_account {
+    text-decoration: none;
+    display: inline-block;
+    width: 15rem;
+    padding: 0.4rem;
+    cursor: pointer;
+    background-color: gray;
+    border: none;
+    color: white;
+    transition-duration: 0.2ms;
+}
+
+#new_account:hover {
+    transition-duration: 0.4ms;
+    background-color: darkgray;
+}
+
+
+.signup_form {
+    background-color: rgba(112, 128, 144, 0.562);
+    position: relative;
+    top: -5rem;
+    width: 30rem;
+    height: 600px;
+    
+}
+
+#singup_form_header {
+    padding: 15px;
+    font-family: 'Verdana';
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up for Microlab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form action="" method="">
+            <h1 id="singup_form_header">Create a new account</h1>
+            
+            <input type="text" name="firstname" id="fname" placeholder="First name" required>
+            <input type="text" name="surname" id="sname" placeholder="Surname" required>
+
+            <br><br>
+
+            <label for="">Date of birth</label>
+            <br><br>
+            <input type="date" name="dob" id="dob" required>
+
+            <br><br>
+            <label for="">Gender</label>
+            <select name="gender" id="gender" required>
+                <option value="" disabled selected>Select your gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <br><br>
+            <input type="email" name="" id="email" placeholder="email address" required>
+
+            <br><br>
+            <input type="password" name="" id="password" placeholder="New password" required>
+
+            <br><br>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+
+    <script>
+
+        //POST REQUEST DATA 
+        const form = document.querySelector('form');
+        const firstname = document.getElementById('fname');
+        const surname = document.getElementById('sname');
+        const dob = document.getElementById('dob');
+        const gender = document.getElementById('gender');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+
+        
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const form_data = {
+                firstname: firstname.value,
+                surname: surname.value, 
+                dob: dob.value, 
+                gender: gender.value, 
+                email: email.value, 
+                password: password.value 
+            }
+
+            // Reviewing the data in browser
+            console.log('Object type: ', form_data);
+            let a = JSON.stringify(form_data);
+            console.log('JSON Data: ', a);
+
+            // POST request to the backend 
+            await fetch ('http://localhost:3000', {
+                method: 'POST',
+                Headers: { 'Content-Type':'application/json' },
+                body: JSON.stringify(form_data)
+            })
+            .then((response)=>response.json())
+            .then(data=>console.log(data))
+            .catch(error=>console.log(error.message))
+
+        });
+
+
+    </script>
+</body>
+</html>
