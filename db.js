@@ -11,8 +11,9 @@ const client = new Client({
 });
 
 
-async function connection () {
+export async function connection () {
     try {
+        console.log('Trying to connect...');
         await client.connect();
         console.log('Database connected successfully');
     } catch(error) {
@@ -20,6 +21,4 @@ async function connection () {
     }
 }
 
-
-
-connection();
+export { client };
