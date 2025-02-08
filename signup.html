@@ -77,7 +77,15 @@
                 body: JSON.stringify(form_data)
             })
             .then(response=>response.json())
-            .then(data=>console.log('Server Response: ', data))
+            .then(data=>{
+                console.log('Server Response: ', data);
+                firstname.value = "";
+                surname.value = "";
+                dob.value = "";
+                gender.value = "";
+                email.value = "";
+                password.value = "";
+            })
             .catch(error=>console.error(error.message))
         });
 

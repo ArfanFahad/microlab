@@ -61,6 +61,9 @@ const server = http.createServer( async (req, res)=>{
                         }
                     })
 
+                    res.statusCode = 200;
+                    res.end(JSON.stringify({ message: 'Data Received' }));
+
                 } else if (req.url === '/login') {
                     // login logic
                     const { email, password } = parse_data;
@@ -93,6 +96,9 @@ const server = http.createServer( async (req, res)=>{
                             res.end(JSON.stringify({ message: 'Invalid credentials. '}));
                         }
                     });
+
+                    //Send a response message using req.end to the frontend 
+
                 } else {
                     //invalid route 
                     res.writeHead(404, { 'Content-Type': 'applicaton/json' });
