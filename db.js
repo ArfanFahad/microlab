@@ -14,10 +14,20 @@ const client = new Client({
 export async function connection () {
     try {
         console.log('Trying to connect...');
-        await client.connect();
-        console.log('Database connected successfully');
-    } catch(error) {
-        console.error('Failed to connect:', error.message);
+        await new Promise((resolve, reject)=>{
+            setTimeout(async ()=>{
+                try {
+                    await client.connect();
+                    console.log('Database connected successfully');
+                    resolve();
+                } catch (error) {
+                    console.error('Failed to connect:', error.message);
+                    reject(error);
+                }
+            }, 2000);
+        });
+    } catch (error) {
+        console.error('Connection Failed: ', error.message);
     }
 }
 
