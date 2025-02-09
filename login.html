@@ -10,18 +10,60 @@
 
     <h2 id="micro">MICROLAB</h2>
 
-    <form action="" method="post">
+    <form action="" method="post" id="login_form">
         <input type="email" name="" id="email_id" placeholder="Email address">
         <br><br>
         <input type="password" name="" id="pass_id" placeholder="Password">
         <br><br>
-        <a href="./dashboard.html" id="login_link">Log in</a>
+        <button type="submit" id="login_button">Log in</button>
         <br><br>
-        <a href="" id="new_account">Create new account</a>
+        <a href="./signup.html" id="new_account">Create new account</a>
     </form>
 
     <script>
 
+        const form = document.querySelector('#login_form');
+        const email = document.getElementById('email_id');
+        const password = document.getElementById('pass_id');
+
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const login_form_data = {
+                email: email.value, 
+                password: password.value 
+            }
+
+            try {
+                const response = await fetch ('http://localhost:3000/login', {
+                method: 'POST',
+                headers: { 'Content-Type':'application/json' },
+                body: JSON.stringify(login_form_data)
+            });
+
+            if (!response.ok) {
+                const error_data = await response.json();
+                throw new Error(error_data.message || 'Login Failed');
+            }
+
+            const data = await response.json();
+            console.log('Server response:', data);
+
+
+            email.value = "";
+            password.value = "";
+
+            alert('Login Successful');
+            
+
+                
+            } catch (error) {
+                console.error('Error during login: ', error.message);
+                alert(`Login failed: ${error.message}`);
+            }
+
+
+        })
         
 
 
