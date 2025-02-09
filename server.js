@@ -95,6 +95,7 @@ const server = http.createServer( async (req, res)=>{
                             res.writeHead(401, { 'Content-Type': 'applicatin/json' });
                             res.end(JSON.stringify({ message: 'Invalid credentials. '}));
                         }
+                        
                     });
 
                     //Send a response message using req.end to the frontend 
@@ -115,8 +116,13 @@ const server = http.createServer( async (req, res)=>{
 });
 
 
+setTimeout(()=>{
+    const PORT = 3000;
+    server.listen(PORT,()=>{
+        console.log(`Server is running: http://localhost:${PORT}`);
+    });
 
-const PORT = 3000;
-server.listen(PORT, () => {
-    console.log(`Server is running: http://localhost:${PORT}`);
-})
+    server.on('error', (error)=>{
+        console.error('Server failed to start: ', error.message);
+    })
+}, 1000);
